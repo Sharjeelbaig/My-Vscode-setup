@@ -1,0 +1,129 @@
+{
+    // Flat Fizz: settings for the look only. Merge into your own settings.json.
+    // Needs: One Dark Pro, JetBrains Mono, "Custom CSS and JS Loader", Power Mode, vscode-animations
+
+    // ───────── Fonts ─────────
+    "editor.fontSize": 20,
+    "editor.lineHeight": 30,
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'zero'",
+    "editor.fontWeight": "900",
+    "terminal.integrated.fontFamily": "JetBrains Mono",
+    "terminal.integrated.fontWeight": "900",
+
+    // ───────── Flat look ─────────
+    "workbench.colorTheme": "One Dark Pro",
+    "oneDarkPro.vivid": true,
+    "window.titleBarStyle": "custom",
+    "workbench.editor.empty.hint": "hidden",
+    "workbench.list.smoothScrolling": true,
+    "workbench.tree.indent": 16,
+    "workbench.tree.renderIndentGuides": "none",
+    "workbench.editor.showTabs": "multiple",
+    "workbench.editor.tabActionLocation": "right",
+    "workbench.startupEditor": "none",
+    "workbench.activityBar.location": "top",
+    "editor.minimap.enabled": false,
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.verticalScrollbarSize": 6,
+    "editor.overviewRulerBorder": false,
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.renderLineHighlight": "gutter",
+    "editor.guides.indentation": false,
+    "editor.guides.bracketPairs": "active",
+    "editor.lineNumbers": "relative",
+    "editor.glyphMargin": false,
+    "editor.folding": false,
+    "editor.padding.top": 12,
+    "breadcrumbs.enabled": false,
+    "editor.stickyScroll.enabled": true,
+    "editor.stickyScroll.maxLineCount": 3,
+    "workbench.colorCustomizations": {
+        // flat surfaces: one tone, no borders, no shadows
+        "editor.background": "#282c34",
+        "activityBar.background": "#282c34",
+        "activityBar.border": "#282c34",
+        "sideBar.background": "#282c34",
+        "sideBar.border": "#282c34",
+        "sideBarSectionHeader.background": "#282c34",
+        "sideBarSectionHeader.border": "#282c34",
+        "titleBar.activeBackground": "#282c34",
+        "titleBar.border": "#282c34",
+        "statusBar.background": "#282c34",
+        "statusBar.border": "#282c34",
+        "panel.background": "#282c34",
+        "panel.border": "#282c34",
+        "editorGroupHeader.tabsBackground": "#282c34",
+        "editorGroupHeader.tabsBorder": "#282c34",
+        "editorGroup.border": "#282c34",
+        "tab.border": "#282c34",
+        "tab.activeBackground": "#282c34",
+        "tab.inactiveBackground": "#282c34",
+        "tab.activeBorder": "#d19a66",
+        "tab.activeBorderTop": "#282c34",
+        "widget.shadow": "#00000000",
+        "scrollbar.shadow": "#00000000",
+        // pops of color
+        "editorCursor.foreground": "#d19a66",
+        "editor.selectionBackground": "#d19a6640",
+        "editor.lineHighlightBackground": "#2c313a",
+        "editorLineNumber.foreground": "#4b5263",
+        "editorLineNumber.activeForeground": "#d19a66",
+        "statusBar.foreground": "#d19a66",
+        "activityBar.activeBorder": "#d19a66",
+        "activityBar.foreground": "#d19a66",
+        "editorBracketHighlight.foreground1": "#e5c07b",
+        "editorBracketHighlight.foreground2": "#c678dd",
+        "editorBracketHighlight.foreground3": "#61afef",
+        "editorBracketHighlight.foreground4": "#98c379",
+        "editorBracketHighlight.foreground5": "#e06c75",
+        "editorBracketHighlight.foreground6": "#56b6c2"
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            { "scope": ["comment", "punctuation.definition.comment"], "settings": { "fontStyle": "italic", "foreground": "#5c6370" } },
+            { "scope": ["keyword.control.flow", "keyword.control.import", "keyword.control.export", "keyword.control.from"], "settings": { "foreground": "#c678dd", "fontStyle": "italic" } },
+            { "scope": ["storage.type.function.arrow", "keyword.operator.arrow"], "settings": { "foreground": "#56b6c2" } },
+            { "scope": ["support.function.console", "support.class.console"], "settings": { "foreground": "#e5c07b" } },
+            { "scope": ["keyword.control.flow.await", "keyword.control.async"], "settings": { "foreground": "#e06c75", "fontStyle": "bold italic" } },
+            { "scope": ["entity.name.function", "meta.function-call"], "settings": { "foreground": "#61afef" } },
+            { "scope": ["string.template", "punctuation.definition.template-expression"], "settings": { "foreground": "#98c379" } }
+        ]
+    },
+
+    // ───────── Alive & engaging ─────────
+    "editor.cursorBlinking": "expand",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorStyle": "line",
+    "editor.cursorWidth": 3,
+    "editor.smoothScrolling": true,
+    "terminal.integrated.smoothScrolling": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorStyle": "line",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.matchBrackets": "always",
+    "editor.renderWhitespace": "none",
+
+    // ───────── Custom CSS and JS Loader ─────────
+    // install.sh fills this in with real paths for your machine.
+    // If you set it up by hand, use absolute file:/// URLs.
+    "animations.Install-Method": "Custom CSS and JS",
+    "vscode_custom_css.imports": [
+        "file:///REPLACE_ME/custom/bubbles.css"
+    ],
+
+    // ───────── Power Mode ─────────
+    "powermode.enabled": true,
+    "powermode.combo.location": "off",
+    "powermode.shake.intensity": 0,
+    "powermode.presets": "magic",
+    "powermode.explosions.enable": true,
+    "powermode.explosions.maxExplosions": 10,
+    "powermode.explosions.duration": 1200,
+    "powermode.explosions.gifMode": "continue",
+    "powermode.explosions.backgroundMode": "mask",
+    "powermode.explosions.size": 8,
+    "powermode.explosions.frequency": 2,
+    "powermode.explosions.offset": 0.35
+}
