@@ -41,9 +41,10 @@ Then:
 
 Everything is in `custom/bubbles.css`:
 
-- `opacity` on `.monaco-workbench::after` controls how loud they are
-- `28s` in the `animation` line controls speed (higher is slower)
+- `opacity` on `.monaco-workbench::before` and `.monaco-workbench::after` controls intensity
+- `22s` / `34s` in the animation lines control each layer speed (higher is slower)
 - the `rgba(...)` colors are the bubble palette
+- `background-size` controls bubble density (larger values = fewer bubbles = better performance)
 
 ## License
 

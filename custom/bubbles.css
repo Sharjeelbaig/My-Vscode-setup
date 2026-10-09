@@ -1,65 +1,67 @@
-/* Kurzgesagt-style fizzing bubbles: flat, outlined, rising from the bottom.
-   Three layers = three depths (small/fast-looking, medium, large/slow-looking).
-   Pure CSS, pointer-events off, so it never blocks typing or clicks. */
+/* Kurzgesagt-style fizzing bubbles, optimized for low paint cost.
+   Two transform-animated layers avoid expensive per-frame gradient re-rasterization. */
 
+.monaco-workbench::before,
 .monaco-workbench::after {
     content: "";
     position: fixed;
-    inset: 0;
+    left: 0;
+    right: 0;
+    top: -110vh;
+    height: 220vh;
     z-index: 5;
     pointer-events: none;
-    opacity: 0.55;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
 
     /* fade out toward the top so bubbles "fizz" up from the bottom and vanish */
     -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.6) 35%, transparent 75%);
     mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.6) 35%, transparent 75%);
-
-    background-image:
-        /* layer 1: small, quick bubbles (cyan + pink) */
-        radial-gradient(circle 7px at 40px 180px, transparent 0 4px, rgba(79, 209, 232, 0.9) 5px 6px, transparent 7px),
-        radial-gradient(circle 5px at 150px 60px, rgba(255, 107, 157, 0.85) 0 3px, transparent 4px),
-        radial-gradient(circle 9px at 230px 280px, transparent 0 6px, rgba(255, 209, 102, 0.9) 7px 8px, transparent 9px),
-        radial-gradient(circle 4px at 90px 330px, rgba(167, 139, 250, 0.9) 0 3px, transparent 4px),
-
-        /* layer 2: medium bubbles with a tiny highlight dot */
-        radial-gradient(circle 16px at 110px 120px, transparent 0 12px, rgba(167, 139, 250, 0.85) 13px 15px, transparent 16px),
-        radial-gradient(circle 3px at 104px 113px, rgba(255, 255, 255, 0.9) 0 2px, transparent 3px),
-        radial-gradient(circle 12px at 330px 400px, transparent 0 9px, rgba(79, 209, 232, 0.85) 10px 11px, transparent 12px),
-        radial-gradient(circle 8px at 420px 220px, rgba(255, 209, 102, 0.8) 0 5px, transparent 6px),
-
-        /* layer 3: big, slow bubbles */
-        radial-gradient(circle 34px at 200px 300px, transparent 0 28px, rgba(255, 107, 157, 0.7) 29px 32px, transparent 34px),
-        radial-gradient(circle 5px at 188px 286px, rgba(255, 255, 255, 0.85) 0 3px, transparent 5px),
-        radial-gradient(circle 24px at 520px 120px, transparent 0 19px, rgba(79, 209, 232, 0.7) 20px 22px, transparent 24px);
-
-    background-size:
-        280px 360px, 280px 360px, 280px 360px, 280px 360px,
-        480px 520px, 480px 520px, 480px 520px, 480px 520px,
-        640px 700px, 640px 700px, 640px 700px;
-
     background-repeat: repeat;
-    animation: kurz-fizz 28s linear infinite;
-    will-change: background-position;
 }
 
-/* Each layer's Y distance equals its tile height -> seamless loop.
-   Different distances in the same time = different speeds (parallax). */
-@keyframes kurz-fizz {
+.monaco-workbench::before {
+    opacity: 0.42;
+    background-image:
+        radial-gradient(circle 6px at 44px 170px, transparent 0 3px, rgba(79, 209, 232, 0.84) 4px 5px, transparent 6px),
+        radial-gradient(circle 4px at 145px 58px, rgba(255, 107, 157, 0.8) 0 2px, transparent 3px),
+        radial-gradient(circle 8px at 236px 284px, transparent 0 5px, rgba(255, 209, 102, 0.84) 6px 7px, transparent 8px),
+        radial-gradient(circle 4px at 92px 330px, rgba(167, 139, 250, 0.82) 0 2px, transparent 3px);
+    background-size: 300px 380px;
+    animation: kurz-fizz-quick 22s linear infinite;
+}
+
+.monaco-workbench::after {
+    opacity: 0.33;
+    background-image:
+        radial-gradient(circle 15px at 110px 120px, transparent 0 11px, rgba(167, 139, 250, 0.74) 12px 14px, transparent 15px),
+        radial-gradient(circle 3px at 104px 113px, rgba(255, 255, 255, 0.84) 0 2px, transparent 3px),
+        radial-gradient(circle 21px at 205px 305px, transparent 0 16px, rgba(255, 107, 157, 0.62) 17px 19px, transparent 21px),
+        radial-gradient(circle 20px at 520px 120px, transparent 0 15px, rgba(79, 209, 232, 0.62) 16px 18px, transparent 20px);
+    background-size: 620px 700px;
+    animation: kurz-fizz-slow 34s linear infinite;
+}
+
+@keyframes kurz-fizz-quick {
     from {
-        background-position:
-            0 0, 0 0, 0 0, 0 0,
-            0 0, 0 0, 0 0, 0 0,
-            0 0, 0 0, 0 0;
+        transform: translate3d(20px, 0, 0);
     }
     to {
-        background-position:
-            30px -720px, 30px -720px, 30px -720px, 30px -720px,
-            -20px -520px, -20px -520px, -20px -520px, -20px -520px,
-            10px -350px, 10px -350px, 10px -350px;
+        transform: translate3d(-16px, -320px, 0);
+    }
+}
+
+@keyframes kurz-fizz-slow {
+    from {
+        transform: translate3d(-14px, 0, 0);
+    }
+    to {
+        transform: translate3d(12px, -220px, 0);
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .monaco-workbench::before,
     .monaco-workbench::after {
         animation: none;
     }
