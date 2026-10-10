@@ -17,6 +17,10 @@
     /* fade out toward the top so bubbles "fizz" up from the bottom and vanish */
     -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.6) 35%, transparent 75%);
     mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.6) 35%, transparent 75%);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
     background-repeat: repeat;
 }
 
