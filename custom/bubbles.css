@@ -15,8 +15,8 @@
     will-change: transform;
 
     /* fade out toward the top so bubbles "fizz" up from the bottom and vanish */
-    -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.6) 35%, transparent 75%);
-    mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.6) 35%, transparent 75%);
+    -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.7) 18%, rgba(0, 0, 0, 0.3) 34%, transparent 48%);
+    mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.7) 18%, rgba(0, 0, 0, 0.3) 34%, transparent 48%);
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
@@ -66,9 +66,52 @@
     }
 }
 
+/* Extra layers: icons that spin slowly, each at its own speed, direction and start angle */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    background-repeat: repeat;
+    -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.8) 15%, rgba(0, 0, 0, 0.4) 50%, transparent 92%);
+    mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.8) 15%, rgba(0, 0, 0, 0.4) 50%, transparent 92%);
+}
+
+body::before {
+    opacity: 0.4;
+    background-size: 360px 440px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='440' viewBox='0 0 360 440'%3E%3Cdefs%3E%3Cpath id='k' d='M0 -10l9 5v10l-9 5l-9 -5v-10z M-9 -5l9 5l9 -5 M0 0v10'/%3E%3Cpath id='s' d='M0 -10L3 -3L10 0L3 3L0 10L-3 3L-10 0L-3 -3z'/%3E%3Cpath id='m' d='M-5 -6h10a6 6 0 0 1 0 12h-10a6 6 0 0 1 0 -12z M0 -3v6 M-3 0h6'/%3E%3Cpath id='u' d='M-12 -6a12 4 0 1 0 24 0a12 4 0 1 0 -24 0 M-12 -6v10c0 2 5 4 12 4s12 -2 12 -4v-10'/%3E%3Cpath id='r' d='M0 -11l6 9l-2 6h-8l-2 -6z M-3 6l-3 5h4 M3 6l3 5h-4'/%3E%3Cpath id='g' d='M-12 -2l12 -6l12 6l-12 6z M-6 2v6c3 3 9 3 12 0v-6'/%3E%3C/defs%3E%3Cg fill='none' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(60 70)' stroke='%237dd3fc'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' from='15' to='375' dur='38s' repeatCount='indefinite'/%3E%3Cuse href='%23k'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(250 40)' stroke='%23ffd166'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' from='200' to='-160' dur='27s' repeatCount='indefinite'/%3E%3Cuse href='%23s'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(170 170)' stroke='%23f472b6'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' from='80' to='440' dur='45s' repeatCount='indefinite'/%3E%3Cuse href='%23m'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(300 260)' stroke='%23a78bfa'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' from='310' to='-50' dur='33s' repeatCount='indefinite'/%3E%3Cuse href='%23g'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(80 310)' stroke='%2334d399'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' from='140' to='-220' dur='52s' repeatCount='indefinite'/%3E%3Cuse href='%23r'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(230 390)' stroke='%2322d3ee'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' from='255' to='615' dur='30s' repeatCount='indefinite'/%3E%3Cuse href='%23u'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    animation: kurz-spin-a 30s linear infinite;
+}
+
+body::after {
+    opacity: 0.3;
+    background-size: 700px 800px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='800' viewBox='0 0 700 800'%3E%3Cdefs%3E%3Cpath id='k' d='M0 -10l9 5v10l-9 5l-9 -5v-10z M-9 -5l9 5l9 -5 M0 0v10'/%3E%3Cpath id='s' d='M0 -10L3 -3L10 0L3 3L0 10L-3 3L-10 0L-3 -3z'/%3E%3Cpath id='m' d='M-5 -6h10a6 6 0 0 1 0 12h-10a6 6 0 0 1 0 -12z M0 -3v6 M-3 0h6'/%3E%3Cpath id='u' d='M-12 -6a12 4 0 1 0 24 0a12 4 0 1 0 -24 0 M-12 -6v10c0 2 5 4 12 4s12 -2 12 -4v-10'/%3E%3Cpath id='r' d='M0 -11l6 9l-2 6h-8l-2 -6z M-3 6l-3 5h4 M3 6l3 5h-4'/%3E%3Cpath id='g' d='M-12 -2l12 -6l12 6l-12 6z M-6 2v6c3 3 9 3 12 0v-6'/%3E%3C/defs%3E%3Cg fill='none' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(120 110) scale(1.6)' stroke='%23f59e0b'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' from='30' to='390' dur='58s' repeatCount='indefinite'/%3E%3Cuse href='%23s'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(520 90) scale(1.5)' stroke='%23c084fc'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' from='170' to='-190' dur='44s' repeatCount='indefinite'/%3E%3Cuse href='%23k'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(330 260) scale(1.7)' stroke='%23fb7185'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' from='265' to='625' dur='70s' repeatCount='indefinite'/%3E%3Cuse href='%23m'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(610 390) scale(1.5)' stroke='%2360a5fa'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' from='95' to='-265' dur='49s' repeatCount='indefinite'/%3E%3Cuse href='%23u'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(150 480) scale(1.6)' stroke='%234ade80'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' from='330' to='690' dur='63s' repeatCount='indefinite'/%3E%3Cuse href='%23r'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(440 570) scale(1.5)' stroke='%23fbbf24'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' from='215' to='-145' dur='41s' repeatCount='indefinite'/%3E%3Cuse href='%23g'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(60 720) scale(1.4)' stroke='%2322d3ee'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' from='55' to='415' dur='55s' repeatCount='indefinite'/%3E%3Cuse href='%23s'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(320 730) scale(1.6)' stroke='%23f472b6'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' from='120' to='-240' dur='66s' repeatCount='indefinite'/%3E%3Cuse href='%23k'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    animation: kurz-spin-b 60s linear infinite;
+}
+
+/* distances equal the tile height so the loop is seamless */
+@keyframes kurz-spin-a {
+    from { background-position: 0 0; }
+    to { background-position: 0 -440px; }
+}
+
+@keyframes kurz-spin-b {
+    from { background-position: 0 0; }
+    to { background-position: 0 -800px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .monaco-workbench::before,
     .monaco-workbench::after {
         animation: none;
+    }
+
+    body::before,
+    body::after {
+        display: none;
     }
 }
